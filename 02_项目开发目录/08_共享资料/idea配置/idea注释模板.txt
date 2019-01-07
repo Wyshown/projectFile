@@ -1,0 +1,122 @@
+类头接口头部注释
+
+/**  
+ * All rights Reserved, Designed By www.yingfeng365.com
+ * @projectName: ${PROJECT_NAME}
+ * @title:     ${NAME}   
+ * @package    ${PACKAGE_NAME}  
+ * @description:    ${TODO}  
+ * @author: 张伟     
+ * @date:   ${DATE} ${TIME}  
+ * @version V1.0.0
+ * @copyright: ${YEAR} www.yingfeng365.com
+ * 注意：本内容仅限于 江苏灜沣信息科技有限公司，禁止外泄以及用于其他的商业 
+ */
+ 
+ 
+ 
+ 方法注释:
+*
+ * $methodName$
+$params$
+ * @Description: 方法描述,必填  <br/>
+ * @return: $return$
+ * @throw: $throw$ 
+ * @author: 张伟
+ * @createTime: $date$ $time$
+ * @Version: V1.0.0
+$updateLog$
+ */
+ 
+ 方法注释参数:
+ $return$:
+	methodReturnType()
+ 
+ $params$:
+	groovyScript("def result=''; def params=\"${_1}\".replaceAll('[\\\\[|\\\\]|\\\\s]', '').split(',').toList(); for(i = 0; i < params.size(); i++) {result+=' * @param ' + params[i] + ((i < params.size() - 1)? '\\n' : '')}; return result", methodParameters())
+	
+$date$:
+	date()
+
+$time$:
+	time()
+$methodName$:
+	concat(qualifiedClassName(),".",methodName())
+$updateLog$:
+	groovyScript("def result = ' * @Copyright : www.jsyf.com Inc. All rights reserved.' + '\\n';  result += ' * @UpateLog :'+'\\t\\t'+ 'Modifier'+'\\t\\t'+'ModifyTime'+'\\t\\t'+'Reason/Contents' + '\\n'; result += ' *             ---------------------------------------------------------' + '\\n *'; return result;")
+	
+	演示：
+/**
+     * jsyf.sys.dao.site.SiteMasterDao.findCountrywide
+     * @param 
+     * @Description: 方法描述,必填  <br/>
+     * @return: com.alibaba.fastjson.JSONObject
+     * @throw:  
+     * @author: 张伟
+     * @createTime: 2017/12/20 15:47
+     * @Version: V1.0.0
+     * @Copyright : www.jsyf.com Inc. All rights reserved.
+     * @UpateLog :		Modifier		ModifyTime		Reason/Contents
+     *             ---------------------------------------------------------
+     *
+     */
+
+
+修改注释模板（在原先没有修改注释title）：	
+$updateLog$
+*$modifyContent$ 
+*$separator$
+*
+参数：
+$updateLog$：
+	groovyScript("def result = '';  result += ' @UpateLog :'+'\\t\\t'+ 'Modifier'+'\\t\\t'+' ModifyTime'+'\\t\\t'+' Reason/Contents' + '\\n'; result += '*             ---------------------------------------------------------'; return result;")
+*$modifyContent$ 
+	groovyScript("def result = ''; result +='           \\t\\t张伟\\t\\t\\t'+\"${_1} \"+\"${_2} \"+'\\t\\t修改内容' ",date(),time())
+*$separator$
+	groovyScript("def result='             ---------------------------------------------------------';return result")
+	演示：
+	 * @UpateLog :		Modifier		 ModifyTime		 Reason/Contents
+     *             ---------------------------------------------------------
+     *           		张伟			2017/12/20 16:10 		修改内容
+     *             ---------------------------------------------------------
+     *
+     */
+	 
+生成修改信息（在已近有修改title下生成）：
+$modifyContent$ 
+*$separator$
+*
+参数：
+$modifyContent$ 
+	groovyScript("def result = ''; result +='           \\t\\t张伟\\t\\t\\t'+\"${_1} \"+\"${_2} \"+'\\t\\t修改内容' ",date(),time())
+$separator$
+	groovyScript("def result='             ---------------------------------------------------------';return result")
+	
+	演示：
+	 *           		张伟			2017/12/20 16:15 		修改内容 
+     *             ---------------------------------------------------------
+     *
+     */
+	 
+整体注释模板演示：
+ /**
+     * jsyf.sys.dao.site.SiteMasterDao.findCountrywide
+     * @param 
+     * @Description: 方法描述,必填  <br/>
+     * @return: com.alibaba.fastjson.JSONObject
+     * @throw:  
+     * @author: 张伟
+     * @createTime: 2017/12/20 15:47
+     * @Version: V1.0.0
+     * @Copyright : www.jsyf.com Inc. All rights reserved.
+     * @UpateLog :		Modifier		ModifyTime		Reason/Contents
+     *             ---------------------------------------------------------
+     *           		张伟			2017/12/20 16:10 		添加***字段
+     *             ---------------------------------------------------------
+     *           		张伟			2017/12/20 16:15 		修改方法，添加逻辑判断
+     *             ---------------------------------------------------------
+     *           		张伟			2017/12/20 16:16 		修改**bug 
+     *             ---------------------------------------------------------
+     *
+     */
+	

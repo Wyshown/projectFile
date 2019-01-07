@@ -1,0 +1,2 @@
+#店铺代理地区新增排序字段
+ALTER TABLE S_STORE_MANAGE_AREA ADD SORT int(5) COMMENT '排序';
